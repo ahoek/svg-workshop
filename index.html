@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<style>
+    .animation {
+        width: 600px;
+        height: 600px;
+        outline: 1px solid grey;
+    }
+
+    .star {
+        fill: yellow;
+        animation: rotate 2s infinite linear, fade 5s infinite ease-in-out;
+        transform-origin: 130px 130px;
+    }
+
+    #star1 {
+        animation: rotate 2s infinite linear,
+                   fade 5s infinite,
+                   shoot 5s ease-out;
+
+    }
+
+    @keyframes rotate {
+        from { transform: rotate(0deg) }
+        to { transform: rotate(360deg) }
+    }
+
+    @keyframes fade {
+        from {  }
+        to {  }
+    }
+
+    @keyframes shoot {
+        from {
+            transform: translate(0, 0) ;
+            opacity: 1;
+        }
+        to {
+            transform: translate(500px, 500px) ;
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<svg class="animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <path class="star" id="star1" d="m55,237 74-228 74,228L9,96h240"/>
+    <!--<path class="star" id="star2" d="m55,237 74-228 74,228L9,96h240"/>-->
+    <!--<path class="star" id="star3" d="m55,237 74-228 74,228L9,96h240"/>-->
+</svg>
+
+</body>
+</html>
