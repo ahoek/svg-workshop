@@ -3,22 +3,24 @@
 <head>
 <style>
     .animation {
-        width: 600px;
-        height: 600px;
-        outline: 1px solid grey;
+        width: 700px;
+        height: 700px;
+        border-bottom: 1px solid grey;
     }
 
     .star {
         fill: yellow;
-        transform-origin: 130px 130px;
-        opacity: 0;
+        transform-origin: 0px 0px;
+        opacity: 1;
         scale: 2;
     }
 
     #star2 {
-        fill: #ffdd33;
+        fill: #ffcc33;
     }
-
+    #star3 {
+        fill: #ddcc66;
+    }
 
 </style>
     <script src="node_modules/gsap/src/minified/TweenMax.min.js"></script>
@@ -32,22 +34,32 @@
     <path class="star" id="star3" d="m55,237 74-228 74,228L9,96h240"/>
 </svg>
 
-<div class="dstar" id="dstar">Star</div>
-
-
 <script>
-    TweenLite.set(".dstar", {
-        perspective: 400,
-        scale: 2,
+    TweenLite.set(".star", {
+        scale: 1,
+        x:500, y: 1000,
+
     });
 
     const tl = new TimelineLite();
     tl.add('start');
-    tl.staggerFrom(".star", 1, {
-        opacity: 1,
-        x:500, y: 1200,
-        rotation:360, scale:0.8,
-    }, .2);
-</script>
+    tl.to("#star1", 1, {
+        opacity: 0,
+        x:250, y: 300,
+        rotation:270,
+        scale: 1.2,
+    }, '#start');
+    tl.to('#star2', 1, {
+        opacity: 0,
+        x:700, y: 300,
+        rotation:270,
+        scale: 1.5,
+    }, 'start+=.2');
+    tl.to('#star3', 1, {
+        opacity: 0,
+        x:500, y: 300,
+        rotation:-270,
+        scale: 2,
+    }, 'start+=.5');</script>
 </body>
 </html>
