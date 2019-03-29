@@ -10,46 +10,44 @@
 
     .star {
         fill: yellow;
-        animation: rotate 2s infinite linear, fade 5s infinite ease-in-out;
         transform-origin: 130px 130px;
+        opacity: 0;
+        scale: 2;
     }
 
-    #star1 {
-        animation: rotate 2s infinite linear,
-                   fade 5s infinite,
-                   shoot 5s ease-out;
-
+    #star2 {
+        fill: #ffdd33;
     }
 
-    @keyframes rotate {
-        from { transform: rotate(0deg) }
-        to { transform: rotate(360deg) }
-    }
 
-    @keyframes fade {
-        from {  }
-        to {  }
-    }
-
-    @keyframes shoot {
-        from {
-            transform: translate(0, 0) ;
-            opacity: 1;
-        }
-        to {
-            transform: translate(500px, 500px) ;
-            opacity: 0;
-        }
-    }
 </style>
+    <script src="node_modules/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="node_modules/gsap/src/minified/TimelineMax.min.js"></script>
 </head>
 <body>
 
 <svg class="animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
     <path class="star" id="star1" d="m55,237 74-228 74,228L9,96h240"/>
-    <!--<path class="star" id="star2" d="m55,237 74-228 74,228L9,96h240"/>-->
-    <!--<path class="star" id="star3" d="m55,237 74-228 74,228L9,96h240"/>-->
+    <path class="star" id="star2" d="m55,237 74-228 74,228L9,96h240"/>
+    <path class="star" id="star3" d="m55,237 74-228 74,228L9,96h240"/>
 </svg>
 
+<div class="dstar" id="dstar">Star</div>
+
+
+<script>
+    TweenLite.set(".dstar", {
+        perspective: 400,
+        scale: 2,
+    });
+
+    const tl = new TimelineLite();
+    tl.add('start');
+    tl.staggerFrom(".star", 1, {
+        opacity: 1,
+        x:500, y: 1200,
+        rotation:360, scale:0.8,
+    }, .2);
+</script>
 </body>
 </html>
