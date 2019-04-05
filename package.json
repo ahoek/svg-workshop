@@ -4,7 +4,8 @@
   "description": "svg",
   "main": "index.js",
   "dependencies": {
-    "gsap": "^2.1.2"
+    "gsap": "^2.1.2",
+    "jquery": "^3.3.1"
   },
   "devDependencies": {},
   "scripts": {

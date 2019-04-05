@@ -13,6 +13,7 @@
         transform-origin: 0px 0px;
         opacity: 1;
         scale: 2;
+        visibility: hidden;
     }
 
     #star2 {
@@ -22,9 +23,14 @@
         fill: #eecc33;
     }
 
+    #button {
+        cursor: pointer;
+        fill: aquamarine;
+    }
 </style>
-    <script src="node_modules/gsap/src/minified/TweenMax.min.js"></script>
-    <script src="node_modules/gsap/src/minified/TimelineMax.min.js"></script>
+    <script src="../node_modules/gsap/src/minified/TweenMax.min.js"></script>
+    <script src="../node_modules/gsap/src/minified/TimelineMax.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.slim.js"></script>
 </head>
 <body>
 
@@ -32,12 +38,16 @@
     <path class="star" id="star1" d="m55,237 74-228 74,228L9,96h240"/>
     <path class="star" id="star2" d="m55,237 74-228 74,228L9,96h240"/>
     <path class="star" id="star3" d="m55,237 74-228 74,228L9,96h240"/>
+
+    <circle id="button" cx="50" cy="50" r="50"/>
 </svg>
 
 <script>
+
     TweenLite.set(".star", {
         scale: 1,
         x:500, y: 1000,
+        visibility: 'visible',
 
     });
 
@@ -60,6 +70,13 @@
         x:600, y: 300,
         rotation:-260,
         scale: 2,
-    }, 'start+=.5');</script>
+    }, 'start+=.5');
+
+
+    const button = $('#button');
+    button.on('click', () => {
+       tl.restart();
+    });
+</script>
 </body>
 </html>
